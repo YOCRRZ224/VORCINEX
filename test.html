@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Internal Manifesto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+:root {
+  --bg:#0e0e0e;
+  --panel:#151515;
+  --text:#e6e6e6;
+  --muted:#9a9a9a;
+  --accent:#c97a3d;
+  --line:rgba(255,255,255,0.08);
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.7;
+}
+
+main {
+  max-width:900px;
+  margin:auto;
+  padding:80px 24px;
+}
+
+header {
+  margin-bottom:80px;
+}
+
+header h1 {
+  font-size:clamp(2.4rem,5vw,3.6rem);
+  letter-spacing:.05em;
+  font-weight:500;
+}
+
+header p {
+  color:var(--muted);
+  max-width:650px;
+}
+
+.progress {
+  height:2px;
+  background:var(--line);
+  margin-top:24px;
+  position:relative;
+}
+
+.progress span {
+  display:block;
+  height:100%;
+  width:0%;
+  background:var(--accent);
+  transition:width .2s ease;
+}
+
+section {
+  border-top:1px solid var(--line);
+  padding:56px 0;
+}
+
+section h2 {
+  font-size:1.1rem;
+  letter-spacing:.18em;
+  color:var(--accent);
+  margin-bottom:24px;
+}
+
+.block {
+  background:var(--panel);
+  padding:28px;
+  border-radius:14px;
+}
+
+.knowledge {
+  display:grid;
+  gap:14px;
+  margin-top:18px;
+}
+
+.toggle {
+  cursor:pointer;
+  padding:14px 18px;
+  background:#1b1b1b;
+  border-radius:10px;
+  transition:background .3s ease;
+}
+
+.toggle:hover {
+  background:#222;
+}
+
+.toggle strong {
+  display:block;
+  letter-spacing:.04em;
+}
+
+.toggle p {
+  margin-top:8px;
+  color:var(--muted);
+  display:none;
+}
+
+.toggle.active p {
+  display:block;
+}
+
+footer {
+  border-top:1px solid var(--line);
+  margin-top:80px;
+  padding-top:40px;
+}
+
+.final-line {
+  font-size:1.4rem;
+  font-weight:500;
+}
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+</style>
+</head>
+
+<body>
+<main>
+<canvas id="bg"></canvas>
+<header>
+    <div class="block">
+  <h1>Internal Manifesto</h1>
+  <p>
+    This is not motivation.  
+    This is a system for how we think, decide, and build — under pressure.
+  </p>
+  <div class="progress"><span id="bar"></span></div>
+</header>
+</div>
+<section>
+    <div class="block">
+<h2>WHY WE EXIST</h2>
+
+We build systems that feel real — understandable, interactive, and intentional.
+
+<div class="knowledge">
+  <div class="toggle">
+    <strong>WHY</strong>
+    <p>Understanding creates trust. Trust creates adoption.</p>
+  </div>
+  <div class="toggle">
+    <strong>FAILURE MODE</strong>
+    <p>Opaque systems confuse users and create dependency instead of confidence.</p>
+  </div>
+</div>
+</div>
+</section>
+
+<section>
+    <div class="block">
+<h2>WHAT WE BUILD</h2>
+
+Interactive systems, tools, and simulations at the intersection of logic and visuals.
+
+<div class="knowledge">
+  <div class="toggle">
+    <strong>WHY</strong>
+    <p>Interaction compresses understanding faster than documentation.</p>
+  </div>
+  <div class="toggle">
+    <strong>FAILURE MODE</strong>
+    <p>Static products rot. Interactive systems evolve.</p>
+  </div>
+</div>
+</div>
+</section>
+
+<section>
+    <div class="block">
+<h2>HOW WE WORK</h2>
+
+
+Build over debate.
+
+<div class="knowledge">
+  <div class="toggle">
+    <strong>WHY</strong>
+    <p>Reality is the only unbiased judge.</p>
+  </div>
+  <div class="toggle">
+    <strong>FAILURE MODE</strong>
+    <p>Endless discussion replaces progress.</p>
+  </div>
+</div>
+</div>
+
+<br/>
+
+<div class="block">
+Clarity over cleverness.
+
+<div class="knowledge">
+  <div class="toggle">
+    <strong>WHY</strong>
+    <p>Readable systems scale better than brilliant ones.</p>
+  </div>
+  <div class="toggle">
+    <strong>FAILURE MODE</strong>
+    <p>Clever code becomes technical debt faster than bad code.</p>
+  </div>
+</div>
+</div>
+
+</section>
+
+<section>
+    <div class="block">
+<h2>DECISION MAKING</h2>
+
+When we disagree, we prototype.  
+Data replaces opinion.
+
+<div class="knowledge">
+  <div class="toggle">
+    <strong>WHY</strong>
+    <p>Small experiments reduce emotional attachment.</p>
+  </div>
+  <div class="toggle">
+    <strong>FAILURE MODE</strong>
+    <p>Unresolved disagreements silently kill momentum.</p>
+  </div>
+</div>
+</div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/three@0.156.0/build/three.min.js"></script>
+<canvas id="bg"></canvas>
+
+<footer>
+<div class="final-line">
+We finish what we start.
+</div>
+</footer>
+
+</main>
+<script>
+/* ==========================
+   CORE SETUP
+========================== */
+const canvas = document.getElementById('bg');
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+  60,
+  innerWidth / innerHeight,
+  0.1,
+  1000
+);
+camera.position.z = 9;
+
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  alpha: true,
+  antialias: true
+});
+
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+/* ==========================
+   FOG (DEPTH)
+========================== */
+scene.fog = new THREE.FogExp2(0x000000, 0.04);
+
+/* ==========================
+   TORUS KNOT CORE
+========================== */
+const geometry = new THREE.TorusKnotGeometry(
+  2.3,   // radius
+  0.6,   // tube
+  220,   // tubular segments
+  16    // radial segments
+);
+
+const material = new THREE.MeshBasicMaterial({
+  wireframe: true,
+  transparent: true,
+  opacity: 0.85
+});
+
+const knot = new THREE.Mesh(geometry, material);
+scene.add(knot);
+
+/* ==========================
+   ORBITING RINGS (SYSTEM FEEL)
+========================== */
+const ringGroup = new THREE.Group();
+scene.add(ringGroup);
+
+for(let i=0;i<3;i++){
+  const ringGeo = new THREE.TorusGeometry(3.6 + i*0.7, 0.05, 8, 120);
+  const ringMat = new THREE.MeshBasicMaterial({
+    wireframe:true,
+    transparent:true,
+    opacity:0.35
+  });
+
+  const ring = new THREE.Mesh(ringGeo, ringMat);
+  ring.rotation.x = Math.random() * Math.PI;
+  ring.rotation.y = Math.random() * Math.PI;
+  ringGroup.add(ring);
+}
+
+/* ==========================
+   MOUSE INFLUENCE
+========================== */
+let mouseX = 0;
+let mouseY = 0;
+
+addEventListener('mousemove', (e)=>{
+  mouseX = (e.clientX / innerWidth - 0.5);
+  mouseY = (e.clientY / innerHeight - 0.5);
+});
+
+/* ==========================
+   ANIMATION LOOP
+========================== */
+function animate(){
+  requestAnimationFrame(animate);
+
+  knot.rotation.x += 0.0015;
+  knot.rotation.y += 0.002;
+
+  ringGroup.rotation.y += 0.0006 + mouseX * 0.001;
+  ringGroup.rotation.x += 0.0004 + mouseY * 0.001;
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+/* ==========================
+   RESPONSIVE
+========================== */
+addEventListener('resize', ()=>{
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+<script>
+const toggles = document.querySelectorAll('.toggle');
+toggles.forEach(t => {
+  t.addEventListener('click', () => t.classList.toggle('active'));
+});
+
+const bar = document.getElementById('bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  bar.style.width = scrolled + '%';
+});
+</script>
+</body>
+</html>
