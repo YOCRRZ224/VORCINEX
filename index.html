@@ -40,11 +40,13 @@ header {
 .logo {
   font-weight:900;
   letter-spacing:.18em;
+  display: inline;
 }
 
 nav a {
   margin-left:24px;
   font-weight:600;
+  display: inline;
 }
 
 section {
@@ -173,10 +175,42 @@ small { color:var(--muted); }
 .brutal-btn:focus {
   outline:none;
 }
-</style>
-</head>
 
-<body>
+</style>
+
+<!-- Usage -->
+<style>
+/* Logo wrapper */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;           /* space between text and SVG */
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #e6e6e6;
+}
+
+/* Highlight the accent part of text */
+.logo strong {
+  color: #B85D22;
+}
+
+/* Logo SVG container */
+.logo-container {
+  width: 40px;         /* small logo size */
+  height: 40px;
+  display: inline-block;
+}
+
+/* Make SVG fill container */
+.logo-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+</style>
+
 <!-- Booting Screen -->
 <div id="boot-screen">
   <div id="boot-logo">VORCINEX</div>
@@ -252,7 +286,86 @@ small { color:var(--muted); }
 <canvas id="bg"></canvas>
 
 <header>
-  <div class="logo"><strong style="color:#B85D22;">VORCINEX</strong>STUDIO</div>
+  <div class="logo"><strong style="color:#B85D22;">VORCINEX</strong><strong style="color:black;">STUDIO</strong><div class="logo-container"> <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for cube -->
+    <radialGradient id="grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B85D22" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#B85D22" stop-opacity="0.3"/>
+    </radialGradient>
+
+    <!-- Shadow for 3D effect -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000"/>
+    </filter>
+  </defs>
+
+  <!-- Main group centered -->
+  <g filter="url(#shadow)" transform="translate(100,100)">
+    <!-- Rotating cube -->
+    <rect x="-25" y="-25" width="50" height="50" rx="8" fill="url(#grad)">
+      <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="0" 
+        to="360" 
+        dur="6s" 
+        repeatCount="indefinite" 
+        additive="sum"/>
+    </rect>
+
+    <!-- Orbit circles -->
+    <circle cx="0" cy="0" r="40" stroke="#B85D22" stroke-width="3" fill="none"/>
+    <circle cx="0" cy="0" r="55" stroke="#B85D22" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+
+    <!-- Orbiting dots -->
+    <g>
+      <!-- Top dot -->
+      <circle cx="0" cy="-55" r="4" fill="#B85D22">
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 0 0"
+          to="360 0 0"
+          dur="5s"
+          repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Right dot -->
+      <circle cx="55" cy="0" r="4" fill="#B85D22">
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 0 0"
+          to="-360 0 0"
+          dur="7s"
+          repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Bottom dot -->
+      <circle cx="0" cy="55" r="4" fill="#B85D22">
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 0 0"
+          to="360 0 0"
+          dur="9s"
+          repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Left dot -->
+      <circle cx="-55" cy="0" r="4" fill="#B85D22">
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 0 0"
+          to="-360 0 0"
+          dur="6s"
+          repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+</svg></div></div>
   <nav>
     <a href="#work">WORK</a>
     <a href="#members">MEMBERS</a>
@@ -463,8 +576,8 @@ small { color:var(--muted); }
    HOW WE WORK <br>
    OUR RULES <br>
    <p>
-     <a href="manifesto.html" class="brutal-btn alt">
-   OUR MANIFESTO
+     <a href="/manifesto.html" class="brutal-btn alt">
+    MANIFESTO
   </a>
 </p>
 </section>
@@ -585,4 +698,4 @@ addEventListener('resize', ()=>{
 </script>
 
 </body>
-</html>
+  </html>
