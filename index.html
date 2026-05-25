@@ -718,6 +718,601 @@ MOBILE
   filter: blur(40px);
   transition: transform 0.2s ease-out;
 }
+.members{
+    position:relative;
+    width:100%;
+    background:#050505;
+    overflow:hidden;
+}
+
+.member-row{
+    position:relative;
+    min-height:100vh;
+    width:100%;
+    padding:0 8vw;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    overflow:hidden;
+}
+
+.member-row::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255,255,255,.01),
+        transparent
+    );
+
+    opacity:0;
+    transition:opacity .5s ease;
+}
+
+.member-row:hover::before{
+    opacity:1;
+}
+
+.member-id{
+    position:absolute;
+    top:80px;
+    left:8vw;
+
+    color:rgba(255,255,255,.18);
+
+    font-size:.7rem;
+    letter-spacing:.4em;
+
+    font-family:"JetBrains Mono", monospace;
+}
+
+.member-main{
+    max-width:700px;
+    position:relative;
+    z-index:2;
+}
+
+.member-main h2{
+    font-size:clamp(4rem,10vw,10rem);
+    line-height:.9;
+    font-weight:900;
+    letter-spacing:-0.06em;
+
+    margin-bottom:24px;
+
+    color:#fff;
+
+    position:relative;
+
+    transition:
+    transform .5s ease,
+    color .5s ease;
+}
+
+.member-row:hover h2{
+    transform:translateX(10px);
+    color:#ffffff;
+}
+
+.member-role{
+    display:inline-block;
+
+    color:#B85D22;
+
+    font-size:.75rem;
+    letter-spacing:.35em;
+
+    margin-bottom:28px;
+
+    font-family:"JetBrains Mono", monospace;
+}
+
+.member-main p{
+    max-width:520px;
+
+    color:rgba(255,255,255,.55);
+
+    line-height:1.9;
+
+    font-size:1rem;
+
+    font-weight:300;
+}
+
+.member-meta{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+    text-align:right;
+
+    font-family:"JetBrains Mono", monospace;
+
+    color:rgba(255,255,255,.28);
+
+    letter-spacing:.25em;
+
+    font-size:.72rem;
+
+    transition:all .4s ease;
+}
+
+.member-row:hover .member-meta{
+    color:#B85D22;
+    transform:translateX(-10px);
+}
+
+.member-link{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    margin-top:40px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    font-size:.72rem;
+    letter-spacing:.3em;
+
+    font-family:"JetBrains Mono", monospace;
+
+    position:relative;
+
+    transition:all .4s ease;
+}
+
+.member-link::after{
+    content:"";
+
+    width:60px;
+    height:1px;
+
+    background:#B85D22;
+
+    transition:width .4s ease;
+}
+
+.member-link:hover{
+    color:#B85D22;
+}
+
+.member-link:hover::after{
+    width:120px;
+}
+
+.left{
+    text-align:left;
+}
+
+.right{
+    text-align:right;
+    flex-direction:row-reverse;
+}
+
+.right .member-id{
+    left:auto;
+    right:8vw;
+}
+
+.right .member-main p{
+    margin-left:auto;
+}
+
+.right .member-meta{
+    text-align:left;
+}
+
+.member-row::after{
+    content:attr(data-bg);
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    font-size:18vw;
+
+    font-weight:900;
+
+    color:rgba(255,255,255,.015);
+
+    white-space:nowrap;
+
+    pointer-events:none;
+
+    letter-spacing:-0.05em;
+}
+
+@media(max-width:900px){
+
+    .member-row{
+        min-height:auto;
+        padding:140px 8vw;
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:60px;
+    }
+
+    .right{
+        flex-direction:column;
+        align-items:flex-start;
+        text-align:left;
+    }
+
+    .right .member-id{
+        left:8vw;
+        right:auto;
+    }
+
+    .right .member-main p{
+        margin-left:0;
+    }
+
+    .member-main h2{
+        font-size:4rem;
+    }
+
+    .member-meta{
+        text-align:left;
+    }
+
+}
+/* =========================
+MEMBERS ATMOSPHERIC BACKGROUND
+========================= */
+
+.members{
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 20% 30%, rgba(184,93,34,.08), transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(184,93,34,.05), transparent 40%),
+    linear-gradient(to bottom, #050505 0%, #070707 50%, #030303 100%);
+}
+
+/* MASSIVE GLOW ORBS */
+.members::before{
+    content:"";
+    position:absolute;
+    width:1200px;
+    height:1200px;
+
+    top:-20%;
+    left:-15%;
+
+    background:
+    radial-gradient(circle,
+    rgba(184,93,34,.12),
+    transparent 60%);
+
+    filter:blur(120px);
+
+    animation:floatOrb1 18s ease-in-out infinite;
+
+    pointer-events:none;
+    z-index:0;
+}
+
+.members::after{
+    content:"";
+    position:absolute;
+    width:900px;
+    height:900px;
+
+    bottom:-30%;
+    right:-10%;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,255,255,.04),
+    transparent 70%);
+
+    filter:blur(140px);
+
+    animation:floatOrb2 22s ease-in-out infinite;
+
+    pointer-events:none;
+    z-index:0;
+}
+
+/* GRID DEPTH */
+.members-grid{
+    position:absolute;
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
+    background-size:80px 80px;
+
+    mask-image:
+    radial-gradient(circle at center,
+    black 20%,
+    transparent 85%);
+
+    opacity:.35;
+
+    pointer-events:none;
+
+    transform:perspective(1200px)
+    rotateX(75deg)
+    scale(2);
+
+    transform-origin:center top;
+
+    z-index:0;
+}
+
+/* FLOATING PARTICLES */
+.members-particles{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.members-particles span{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.4);
+
+    box-shadow:
+    0 0 10px rgba(184,93,34,.4),
+    0 0 20px rgba(184,93,34,.2);
+
+    animation:particleFloat linear infinite;
+}
+
+/* RANDOM PARTICLES */
+.members-particles span:nth-child(1){
+    left:10%;
+    animation-duration:18s;
+    animation-delay:-2s;
+    top:110%;
+}
+
+.members-particles span:nth-child(2){
+    left:25%;
+    animation-duration:24s;
+    animation-delay:-5s;
+    top:120%;
+}
+
+.members-particles span:nth-child(3){
+    left:40%;
+    animation-duration:20s;
+    animation-delay:-3s;
+    top:115%;
+}
+
+.members-particles span:nth-child(4){
+    left:60%;
+    animation-duration:26s;
+    animation-delay:-8s;
+    top:130%;
+}
+
+.members-particles span:nth-child(5){
+    left:75%;
+    animation-duration:16s;
+    animation-delay:-4s;
+    top:120%;
+}
+
+.members-particles span:nth-child(6){
+    left:90%;
+    animation-duration:28s;
+    animation-delay:-7s;
+    top:125%;
+}
+
+/* SCANNING LIGHT */
+.members-scan{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        transparent,
+        rgba(184,93,34,.04),
+        transparent
+    );
+
+    animation:scanMove 8s linear infinite;
+
+    pointer-events:none;
+    z-index:1;
+}
+/* FLINT — Experimental / AI */
+.status-badge.experimental{
+    color:#ff9d4d;
+    border-color:rgba(255,157,77,.35);
+    background:rgba(255,157,77,.08);
+    box-shadow:0 0 18px rgba(255,157,77,.18);
+}
+
+/* DOXO — Stable / Sync */
+.status-badge.stable{
+    color:#4dffb2;
+    border-color:rgba(77,255,178,.35);
+    background:rgba(77,255,178,.08);
+    box-shadow:0 0 18px rgba(77,255,178,.18);
+}
+
+/* VANTA-LOG — Security / Monitoring */
+.status-badge.security{
+    color:#5da8ff;
+    border-color:rgba(93,168,255,.35);
+    background:rgba(93,168,255,.08);
+    box-shadow:0 0 18px rgba(93,168,255,.18);
+}
+
+/* ORRIVN — Media / Streaming */
+.status-badge.media{
+    color:#d88cff;
+    border-color:rgba(216,140,255,.35);
+    background:rgba(216,140,255,.08);
+    box-shadow:0 0 18px rgba(216,140,255,.18);
+}
+/* ANIMATIONS */
+.member-row{
+    position:relative;
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.025),
+        rgba(255,255,255,.008)
+    );
+
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.04);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    overflow:hidden;
+
+    transition:
+    background .5s ease,
+    border-color .5s ease,
+    transform .5s ease;
+}
+
+/* ambient glow */
+.member-row::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at var(--x,50%) var(--y,50%),
+        rgba(184,93,34,.12),
+        transparent 35%
+    );
+
+    opacity:0;
+    transition:opacity .4s ease;
+
+    pointer-events:none;
+}
+
+.member-row:hover::before{
+    opacity:1;
+}
+
+/* subtle edge glow */
+.member-row::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border:1px solid rgba(184,93,34,.12);
+
+    box-shadow:
+    inset 0 0 40px rgba(184,93,34,.04),
+    0 0 60px rgba(0,0,0,.35);
+
+    pointer-events:none;
+}
+@keyframes particleFloat{
+    from{
+        transform:
+        translateY(0)
+        scale(1);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(-140vh)
+        scale(0);
+
+        opacity:0;
+    }
+}
+
+@keyframes floatOrb1{
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(60px,40px);
+    }
+}
+
+@keyframes floatOrb2{
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-40px,-60px);
+    }
+}
+
+@keyframes scanMove{
+    from{
+        transform:translateY(-100%);
+    }
+
+    to{
+        transform:translateY(100%);
+    }
+}
+.project[data-status="Research"]{
+    border:1px solid rgba(255, 140, 0, .18);
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,140,0,.05),
+        rgba(255,255,255,.015)
+    );
+}
+
+.project[data-status="Research"]::after{
+    background:linear-gradient(
+        90deg,
+        #ff7b00,
+        #ffb347
+    );
+}
+
+.project[data-status="Research"] small{
+    color:#ff9a3c;
+}
+
+.project[data-status="Research"] .status-badge{
+    color:#ffb347;
+    border:1px solid rgba(255,179,71,.35);
+    background:rgba(255,140,0,.08);
+    box-shadow:0 0 18px rgba(255,140,0,.12);
+}
 </style>
 
 </head>
@@ -793,440 +1388,165 @@ MOBILE
     </p>
   </div>
 </section>
+<section class="members" id="network">
+<div class="members-grid"></div>
 
-<section class="network" id="network">
-  <svg class="network-lines">
-    <line x1="50%" y1="50%" x2="20%" y2="25%" />
-    <line x1="50%" y1="50%" x2="80%" y2="25%" />
-    <line x1="50%" y1="50%" x2="25%" y2="80%" />
-    <line x1="50%" y1="50%" x2="75%" y2="80%" />
-  </svg>
-
-
-
-<style>
-
-@media (max-width: 1000px) {
-  .network {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .member {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 90%;
-    max-width: 420px;
-  }
-}
-.member {
-  position: absolute;
-  width: 320px;
-  padding: 30px;
-  background: linear-gradient(145deg, rgba(25,25,25,0.35), rgba(10,10,10,0.85));
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 22px;
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  overflow: hidden;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.4s ease;
-  cursor: none;
-  z-index: 5;
-  transform-style: preserve-3d;
-}
-
-.member::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 24px;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(184,93,34,.25),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  filter: blur(10px);
-}
-
-.member:hover::after {
-  opacity: 1;
-}
-
-.member:hover {
-  border-color: rgba(184,93,34,.5);
-  box-shadow: 0 25px 80px rgba(0,0,0,0.6), 0 0 60px rgba(184,93,34,.15);
-  transform: translateY(-6px) scale(1.01);
-}
-.avatar {
-  width: 62px;
-  height: 62px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #B85D22, #ffb06e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 1.2rem;
-  color: #000;
-  position: relative;
-  box-shadow: 0 0 25px rgba(184,93,34,.25);
-}
-
-.avatar::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: 18px;
-  background: radial-gradient(circle, rgba(184,93,34,.25), transparent 70%);
-  opacity: 0.6;
-  animation: pulseGlow 3s infinite ease-in-out;
-}
-
-@keyframes pulseGlow {
-  0%,100% { transform: scale(1); opacity: 0.4; }
-  50% { transform: scale(1.2); opacity: 0.15; }
-}
-
-
-.member-name {
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-
-.member-role {
-  display: inline-block;
-  margin-top: 6px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(184,93,34,.1);
-  border: 1px solid rgba(184,93,34,.35);
-  color: var(--accent);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 22px;
-}
-
-.tag {
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.06);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  font-family: 'JetBrains Mono', monospace;
-  transition: all 0.3s ease;
-}
-
-.tag:hover {
-  border-color: rgba(184,93,34,.4);
-  background: rgba(184,93,34,.08);
-  transform: translateY(-2px);
-}
-
-.status {
-  margin-top: 22px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #6eff91;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #6eff91;
-  box-shadow: 0 0 12px #6eff91;
-  position: relative;
-}
-
-.dot::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: rgba(110,255,145,0.3);
-  animation: pulseDot 2s infinite ease-out;
-}
-
-@keyframes pulseDot {
-  0% { transform: scale(0.6); opacity: 0.6; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
-.m1 { top: 15%; left: 8%; }
-.m2 { top: 15%; right: 8%; }
-.m3 { bottom: 15%; left: 10%; }
-.m4 { bottom: 15%; right: 10%; }
-.project small {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(184,93,34,.3);
-  background: rgba(184,93,34,.05);
-}
-.project {
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.project-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.status-badge {
-  font-size: 0.6rem;
-  padding: 4px 10px;
-  border-radius: 999px;
-  letter-spacing: 0.2em;
-  font-family: 'JetBrains Mono', monospace;
-  border: 1px solid;
-}
-
-.status-badge.stable {
-  color: #6eff91;
-  border-color: #6eff91;
-  background: rgba(110,255,145,0.05);
-}
-
-.status-badge.experimental {
-  color: #ffcf66;
-  border-color: #ffcf66;
-  background: rgba(255,207,102,0.05);
-}
-
-.status-badge.security {
-  color: #ff5e5e;
-  border-color: #ff5e5e;
-  background: rgba(255,94,94,0.05);
-}
-
-.status-badge.media {
-  color: #66b3ff;
-  border-color: #66b3ff;
-  background: rgba(102,179,255,0.05);
-}
-
-.project-meta {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.65rem;
-  color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.15em;
-}
-
-/* HOVER INTENSITY */
-.project:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-}
-
-/* glow pulse on hover */
-.project::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(184,93,34,.2), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project:hover::before {
-  opacity: 1;
-}
-.portfolio-btn {
-  margin-top: 18px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(184,93,34,.35);
-  background: rgba(184,93,34,.05);
-  color: var(--accent);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  text-align: center;
-  font-family: 'JetBrains Mono', monospace;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* glow sweep effect */
-.portfolio-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 120%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(184,93,34,.25),
-    transparent
-  );
-  transition: 0.6s;
-}
-
-.portfolio-btn:hover::before {
-  left: 120%;
-}
-
-.portfolio-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(184,93,34,.15);
-  border-color: rgba(184,93,34,.6);
-  background: rgba(184,93,34,.1);
-}
-.portfolio-btn {
-  pointer-events: auto;
-  z-index: 10;
-}
-.ceo-badge {
-  display: inline-block;
-  margin-left: 10px;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  font-family: 'JetBrains Mono', monospace;
-  color: #ff4d4d;
-  border: 1px solid rgba(255, 77, 77, 0.5);
-  background: rgba(255, 77, 77, 0.08);
-  box-shadow: 0 0 15px rgba(255, 77, 77, 0.15);
-  vertical-align: middle;
-}
-.ceo-badge {
-  animation: ceoPulse 2.5s infinite ease-in-out;
-}
-
-@keyframes ceoPulse {
-  0%, 100% { box-shadow: 0 0 10px rgba(255,77,77,0.2); }
-  50% { box-shadow: 0 0 25px rgba(255,77,77,0.5); }
-}
-</style>
-
-<!-- =========================
-ONLY MEMBER HTML (UNCHANGED STRUCTURE, ONLY VISUAL IMPROVED VIA CSS)
-========================= -->
-<h1>MEMBERS</h1>
-<div class="member m1" data-speed="1.2" data-portfolio="https://yocrrz.is-a.dev">
-  <div class="member-top">
-    <div class="avatar">Y</div>
-    <div>
-        <span class="ceo-badge">CEO</span>
-      <div class="member-name">YOCRRZ</div>
-   <div class="member-role">
-  SYSTEMS ARCHITECT
-  
+<div class="members-particles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 </div>
-      <div class="portfolio-btn" role="button">VIEW PORTFOLIO</div>
+
+<div class="members-scan"></div>
+  <div class="member-row left">
+
+    <div class="member-id">[ 01 ]</div>
+
+    <div class="member-main">
+      <h2>YOCRRZ</h2>
+
+      <div class="member-role">
+        SYSTEMS ARCHITECT
+      </div>
+
+      <p>
+        Backend systems, AI tooling, realtime networking,
+        infrastructure engineering and experimental architectures.
+      </p>
+
+      <a href="https://yocrrz.is-a.dev" target="_blank" class="member-link">
+        VIEW PORTFOLIO
+      </a>
     </div>
-  </div>
-  <p>Backend systems, AI tooling, realtime networking, infrastructure, and experimental architectures.</p>
-  <div class="tags">
-    <div class="tag">PYTHON</div>
-    <div class="tag">BASH</div>
-    <div class="tag">SEC / NETWORKING</div>
-  </div>
-  <div class="status"><div class="dot"></div>ONLINE</div>
-</div>
 
-<div class="member m2" data-speed="0.8" data-portfolio="#">
-  <div class="member-top">
-    <div class="avatar">A</div>
-    <div>
-        <span class="ceo-badge">CO-FOUNDER</span>
-      <div class="member-name">ABDUHAMID</div>
-      <div class="member-role">INTERACTIVE ENGINEER</div>
-      
+    <div class="member-meta">
+      <span>PYTHON</span>
+      <span>BASH</span>
+      <span>NETWORKING</span>
+      <span>AI SYSTEMS</span>
     </div>
-  </div>
-  <p>Unity systems, simulations, interactive environments, realtime visual architecture.</p>
-  <div class="tags">
-    <div class="tag">UE5</div>
-    <div class="tag">SIMULATION</div>
-    <div class="tag">3D</div>
-  </div>
-  <div class="status"><div class="dot"></div>ONLINE</div>
-</div>
 
-<div class="member m3" data-speed="1.1" data-portfolio="https://portfolio-new-brown-theta.vercel.app/">
-  <div class="member-top">
-    <div class="avatar">S</div>
-    <div>
-      <div class="member-name">SHLOK ARTH</div>
-      <div class="member-role">SYSTEM DESIGNER</div>
-        <div class="portfolio-btn" role="button">VIEW PORTFOLIO</div>
+  </div>
+
+  <div class="member-row right">
+
+    <div class="member-id">[ 02 ]</div>
+
+    <div class="member-main">
+      <h2>ABDUHAMID</h2>
+
+      <div class="member-role">
+        INTERACTIVE ENGINEER
+      </div>
+
+      <p>
+        Unity systems, simulations, realtime visual architecture
+        and immersive interaction environments.
+      </p>
     </div>
-  </div>
-  <p>Infrastructure concepts, workflow systems, experimental logic and research.</p>
-  <div class="tags">
-    <div class="tag">Explorer</div>
-    <div class="tag">Creator</div>
-    <div class="tag">FRONTEND</div>
-  </div>
-  <div class="status"><div class="dot"></div>ONLINE</div>
-</div>
-<div class="member m4" data-speed="0.95" data-portfolio="https://clintlorenzo.is-a.dev">
-  <div class="member-top">
-    <div class="avatar">C</div>
-    <div>
-      <div class="member-name">CLINT LORENZO</div>
-      <div class="member-role">CREATIVE TECHNOLOGIST</div>
-        <div class="portfolio-btn" role="button">VIEW PORTFOLIO</div>
+
+    <div class="member-meta">
+      <span>UE5</span>
+      <span>SIMULATION</span>
+      <span>3D SYSTEMS</span>
+      <span>REALTIME</span>
     </div>
+
   </div>
-  <p>Interface experimentation, interaction systems, visual direction and concepts.</p>
-  <div class="tags">
-    <div class="tag">UI</div>
-    <div class="tag">CREATIVE</div>
-    <div class="tag">INTERACTION</div>
-  </div>
-  <div class="status"><div class="dot"></div>ONLINE</div>
-</div>
-<div class="member m" data-speed="0.95" data-portfolio="https://renomerx.is-a.dev">
-  <div class="member-top">
-    <div class="avatar">Z</div>
-    <div>
-      <div class="member-name">Zonaryx</div>
-      <div class="member-role">FRONTEND</div>
-        <div class="portfolio-btn" role="button">VIEW PORTFOLIO</div>
+
+  <div class="member-row left">
+
+    <div class="member-id">[ 03 ]</div>
+
+    <div class="member-main">
+      <h2>SHLOK ARTH</h2>
+
+      <div class="member-role">
+        SYSTEM DESIGNER
+      </div>
+
+      <p>
+        Infrastructure concepts, workflow systems,
+        research architecture and experimental logic.
+      </p>
+
+      <a href="https://portfolio-new-brown-theta.vercel.app/" target="_blank" class="member-link">
+        VIEW PORTFOLIO
+      </a>
     </div>
+
+    <div class="member-meta">
+      <span>FRONTEND</span>
+      <span>CREATOR</span>
+      <span>WORKFLOWS</span>
+      <span>RESEARCH</span>
+    </div>
+
   </div>
-  <p>Fast experimentation, smooth visuals and products</p>
-  <div class="tags">
-    <div class="tag">UI</div>
-    <div class="tag">VIBECODE</div>
-    <div class="tag">FAST</div>
+
+  <div class="member-row right">
+
+    <div class="member-id">[ 04 ]</div>
+
+    <div class="member-main">
+      <h2>CLINT LORENZO</h2>
+
+      <div class="member-role">
+        CREATIVE TECHNOLOGIST
+      </div>
+
+      <p>
+        Interface experimentation, interaction systems,
+        visual direction and digital concepts.
+      </p>
+
+      <a href="https://clintlorenzo.is-a.dev" target="_blank" class="member-link">
+        VIEW PORTFOLIO
+      </a>
+    </div>
+
+    <div class="member-meta">
+      <span>UI</span>
+      <span>CREATIVE</span>
+      <span>INTERACTION</span>
+      <span>VISUALS</span>
+    </div>
+
   </div>
-  <div class="status"><div class="dot"></div>ONLINE</div>
-</div>
+
+  <div class="member-row left">
+
+    <div class="member-id">[ 05 ]</div>
+
+    <div class="member-main">
+      <h2>ZONARYX</h2>
+
+      <div class="member-role">
+        FRONTEND ENGINEER
+      </div>
+
+      <p>
+        Fast experimentation, fluid interfaces,
+        smooth product systems and visual engineering.
+      </p>
+
+      <a href="https://renomerx.is-a.dev" target="_blank" class="member-link">
+        VIEW PORTFOLIO
+      </a>
+    </div>
+
+    <div class="member-meta">
+      <span>UI</span>
+      <span>FAST</span>
+      <span>VIBECODE</span>
+      <span>PRODUCTS</span>
+    </div>
+
+  </div>
+
 </section>
 <section class="projects" id="projects">
   <h2 class="section-title">OUR PROJECTS</h2>
@@ -1459,27 +1779,7 @@ gsap.to(".hero-content", {
 /* =========================
 NAV HIDE ON SCROLL (SMOOTHER)
 ========================= */
-let lastScroll = 0;
-let ticking = false;
 
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      const currentScroll = window.pageYOffset;
-
-      if (currentScroll > lastScroll && currentScroll > 120) {
-        navbar.style.transform = 'translateY(-110%)';
-      } else {
-        navbar.style.transform = 'translateY(0)';
-      }
-
-      lastScroll = currentScroll;
-      ticking = false;
-    });
-
-    ticking = true;
-  }
-});
 /* =========================
 NETWORK PARALLAX (STABILIZED)
 ========================= */
@@ -1515,16 +1815,6 @@ gsap.utils.toArray('.project, .sim-card').forEach((el) => {
 });
 
 /* CORE PULSE */
-anime({
-  targets: ".core",
-  scale: [
-    { value: 1, duration: 0 },
-    { value: 1.03, duration: 1800 }
-  ],
-  direction: "alternate",
-  loop: true,
-  easing: "easeInOutSine"
-});
 
 /* =========================
 CUSTOM CURSOR (IMPROVED SMOOTHNESS)
@@ -1549,7 +1839,7 @@ function animateCursor() {
 animateCursor();
 
 /* CURSOR HOVER STATES */
-document.querySelectorAll('a, .member, .project, .sim-card').forEach(el => {
+document.querySelectorAll('a, .member-row, .project').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cursorOutline.style.width = '60px';
     cursorOutline.style.height = '60px';
@@ -1566,7 +1856,7 @@ document.querySelectorAll('a, .member, .project, .sim-card').forEach(el => {
 /* =========================
 3D MEMBER CARDS (OPTIMIZED PERFORMANCE)
 ========================= */
-document.querySelectorAll(".member").forEach(card => {
+document.querySelectorAll(".member-row").forEach(card => {
 
   let rafId;
 
@@ -1747,7 +2037,25 @@ document.querySelectorAll(".project").forEach(card => {
       ease: "power2.out"
     });
   });
+  card.addEventListener("mouseenter", () => {
+  gsap.to(card, {
+    y: -6,
+    scale: 1.01,
+    duration: 0.35,
+    ease: "power2.out"
+  });
+});
 
+  card.addEventListener("mouseleave", () => {
+  gsap.to(card, {
+    y: 0,
+    scale: 1,
+    rotationY: 0,
+    rotationX: 0,
+    duration: 0.6,
+    ease: "power2.out"
+  });
+});
 });
 document.querySelectorAll(".portfolio-btn").forEach(btn => {
   btn.addEventListener("click", (e) => {
@@ -1775,6 +2083,7 @@ document.querySelectorAll(".portfolio-btn").forEach(btn => {
     }, 180);
   });
 });
+
 </script>
 
 </body>
