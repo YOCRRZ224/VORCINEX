@@ -1,4 +1,4 @@
-(function () {
+Co-Founder-Founderunction () {
 
   const css = `
   .vx-float {
@@ -155,9 +155,9 @@
       <div class="vx-body">
         <div class="vx-members">
 
-          <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Yocrrz</div><div class="vx-role">CEO/Co-Founder</div></div></div>
+          <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Yocrrz</div><div class="vx-role">CEO/Backend</div></div></div>
 
-          <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Abduhamid</div><div class="vx-role">Co-Founder/Frontend</div></div></div>
+          <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Abduhamid</div><div class="vx-role">Co-Founder/UE5</div></div></div>
 
           <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Shlokarth</div><div class="vx-role">Frontend</div></div></div>
 
