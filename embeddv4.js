@@ -1,4 +1,4 @@
-Co-Founder-Founderunction () {
+(function () {
 
   const css = `
   .vx-float {
