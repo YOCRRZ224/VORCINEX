@@ -161,9 +161,9 @@
 
           <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Shlokarth</div><div class="vx-role">Frontend</div></div></div>
 
-          <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Zonaryx</div><div class="vx-role">Firebase</div></div></div>
-
           <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Clint</div><div class="vx-role">Fullstack</div></div></div>
+
+          <div class="vx-member"><div class="vx-status"></div><div class="vx-meta"><div class="vx-name">Mehrscvx-member</div><div class="vx-role">Kotlin/Android</div></div></div>
 
         </div>
 
